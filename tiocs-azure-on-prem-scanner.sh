@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # This script excepts 3 command-line arguments in this particular order: Tenable.io Access Key, Tenable.io Secret Key, Tenable.io JFrog pubread password
 #This script expects the following environment variables to be set:
 # BUILD_BUILDID - This is set by Azure if you have called this script from a Docker Build and Push step

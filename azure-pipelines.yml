@@ -12,7 +12,7 @@ variables:
   # Container registry service connection established during pipeline creation
   dockerRegistryServiceConnection: '269b82d4-ef3b-4129-a3b0-a605cc76352c'
   imageRepository: 'webloginsite'
-  containerRegistry: 'tenableconsecdemo.azurecr.io'
+  containerRegistry: 'TenableConSecDemo'
   dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
   tag: '$(Build.BuildId)'
   

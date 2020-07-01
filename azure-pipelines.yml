@@ -31,7 +31,7 @@ stages:
     - task: Docker@2
       displayName: Build an image
       inputs:
-        containerRegistry: 'tenableconsecdemo'
+        containerRegistry: $(containerRegistry)
         command: build
         repository: $(imageRepository)
         dockerfile: $(dockerfilePath)
@@ -51,6 +51,6 @@ stages:
     - task: Docker@2
       displayName: Push image to registry
       inputs:
-        containerRegistry: 'tenableconsecdemo'
-        repository: '$(imageRepository)'
+        containerRegistry: $(containerRegistry)
+        repository: $(imageRepository)
         command: 'push'

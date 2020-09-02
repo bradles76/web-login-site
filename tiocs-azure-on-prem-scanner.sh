@@ -26,15 +26,9 @@ docker images
 echo "Start of on-prem analysis"
 docker save $CONTAINERREGISTRY/$IMAGEREPOSITORY:$BUILD_BUILDID | docker run -e CHECK_POLICY=true -e DEBUG_MODE=true -e TENABLE_ACCESS_KEY=$TIOACCKEY -e TENABLE_SECRET_KEY=$TIOSECKEY -e IMPORT_REPO_NAME=$IMAGEREPOSITORY -i tenableio-docker-consec-local.jfrog.io/cs-scanner:latest inspect-image $IMAGEREPOSITORY:$BUILD_BUILDID
 
-import requests
-
-url = "https://cloud.tenable.com/container-security/api/v2/reports/repository/$IMAGEREPOSITORY:$BUILD_BUILDID"
-
-headers = {
-    "accept": "application/json",
-    "x-apikeys": "accessKey=$TIOACCKEY;secretKey=$TIOSECKEY"
-}
-
-response = requests.request("GET", url, headers=headers)
-
-print(response.text)
+echo "Retrieve scan results"
+curl --request GET \
+  --url https://cloud.tenable.com/container-security/api/v2/reports/repository/$IMAGEREPOSITORY/$BUILD_BUILDID \
+  --header 'accept: application/json' \
+  --header 'x-apikeys: accessKey=$TIOACCKEY;secretKey=$TIOSECKEY'
+  

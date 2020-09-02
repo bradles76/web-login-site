@@ -30,5 +30,5 @@ echo "Retrieve scan results"
 curl --request GET \
   --url https://cloud.tenable.com/container-security/api/v2/reports/$IMAGEREPOSITORY/$IMAGEREPOSITORY/$BUILD_BUILDID \
   --header 'accept: application/json' \
-  --header 'x-apikeys: accessKey=;secretKey='
+  --header 'x-apikeys: accessKey='"$TIOACCKEY"';secretKey='"$TIOSECKEY"''
   
